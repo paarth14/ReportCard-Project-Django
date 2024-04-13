@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% block start %}
+
+<div class="container mt-5">
+  <form class="mb-4">
+    <div class="row">
+      <div class="col-md-6">
+        <input class="form-control" name="Search" placeholder="Search" />
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-success">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">student_id</th>
+        <th scope="col">department</th>
+        <th scope="col">student_name</th>
+        <th scope="col">student_email</th>
+        <th scope="col">student_age</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in queryset %}
+      <tr>
+        <th scope="row">
+          {{forloop.counter|add:queryset.start_index|add:"-1"}}
+        </th>
+        <td>{{student.student_id}}</td>
+        <td>{{student.department}}</td>
+        <td>{{student.student_name}}</td>
+        <td>{{student.student_email}}</td>
+        <td>{{student.student_age}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% if queryset.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1">« first</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ queryset.previous_page_number }}"
+          >previous</a
+        >
+      </li>
+      {% endif %}
+
+      <li class="page-item disabled">
+        <a class="page-link"
+          >Page {{ queryset.number }} of {{ queryset.paginator.num_pages }}.</a
+        >
+      </li>
+
+      {% if queryset.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ queryset.next_page_number }}"
+          >next</a
+        >
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ queryset.paginator.num_pages }}"
+          >last »</a
+        >
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+</div>
+
+{% endblock %}
