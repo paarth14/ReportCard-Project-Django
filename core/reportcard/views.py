@@ -3,9 +3,9 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.paginator import Paginator
-from django.db.models import Q
-# Create your views here.
+from django.db.models import Q, Count, Sum
 
+# Create your views here.
 
 def get_students(request):
     queryset = Student.objects.all()
@@ -25,3 +25,10 @@ def get_students(request):
     page_obj = paginator.get_page(page_number)
     print(page_obj)
     return render(request, 'report/students.html', {'queryset' : page_obj})
+
+def see_marks(request, student_id):
+    queryset = SubjectMarks.objects.filter(student__student_id__student_id = student_id)
+    total_marks = queryset.aggregate(total_marks = Sum('marks'))
+    print(total_marks)
+    return render(request, 'report/see_marks.html', {'queryset' : queryset, 'total_marks': total_marks})
+

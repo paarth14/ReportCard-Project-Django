@@ -30,7 +30,11 @@
         <th scope="row">
           {{forloop.counter|add:queryset.start_index|add:"-1"}}
         </th>
-        <td>{{student.student_id}}</td>
+        <td>
+          <a href="{% url 'see_marks' student.student_id %}"
+            >{{student.student_id}}</a
+          >
+        </td>
         <td>{{student.department}}</td>
         <td>{{student.student_name}}</td>
         <td>{{student.student_email}}</td>
