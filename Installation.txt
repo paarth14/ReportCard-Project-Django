@@ -1,0 +1,34 @@
+Running the Project:
+
+- Firstly, Clone the repository
+
+- Download Python (Latest Version)
+
+- Open that on VS Code
+
+- In terminal write below (Virtual Environment):
+pip install virtualenv
+For running virtual env in cmd, just type as ⟶ virtualenv env
+For activating virtual env in cmd, just do following in cmd prompts:
+cd env/
+cd Scripts
+activate or .\activate (if in case earlier not work)
+cd ..
+cd ..
+
+- In terminal write below (Django Installation):
+pip install Django
+To check if Django successfully installed in our system, do following:
+python
+>>import django
+>>django.__version__
+‘4.2.4'
+Hence, we can see that Django is successfully installed in our System.
+To undo the previous action in cmd, just type as ⟶ ctrl+z
+
+- cd core
+- python manage.py runserver
+
+- Localhost server link: http://127.0.0.1:8000/students/?page=1
+
+- Admin Panel : http://127.0.0.1:8000/admin/
