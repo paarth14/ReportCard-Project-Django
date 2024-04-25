@@ -26,9 +26,21 @@ def get_students(request):
     print(page_obj)
     return render(request, 'report/students.html', {'queryset' : page_obj})
 
+# from .seed import generate_report_card    
 def see_marks(request, student_id):
+    # generate_report_card()
     queryset = SubjectMarks.objects.filter(student__student_id__student_id = student_id)
     total_marks = queryset.aggregate(total_marks = Sum('marks'))
-    print(total_marks)
+    # current_rank = -1
+    # ranks = Student.objects.annotate(marks = Sum('studentmarks__marks')).order_by('-marks', 'student_age')
+    # i=1
+    # for rank in ranks:
+    #     if student_id == rank.student_id.student_id:
+    #         current_rank = i
+    #         break
+    #     i+=1
+
+    # print(total_marks)
+    # return render(request, 'report/see_marks.html', {'queryset' : queryset, 'total_marks': total_marks, 'current_rank' : current_rank})
     return render(request, 'report/see_marks.html', {'queryset' : queryset, 'total_marks': total_marks})
 
