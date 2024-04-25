@@ -4,7 +4,7 @@
 This project is a Django application that generates report cards for students.
 
 ## Installation
-Clone the repository: git clone https://github.com/yourusername/report-card-project.git
+Clone the repository: git clone https://github.com/paarth14/ReportCard-Project-Django.git
 
 Follow the process from 'Installation.txt'
 
